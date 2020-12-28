@@ -7,7 +7,7 @@ var tableData = data;
 var tbody = d3.select("tbody");
 
 //Function for adding data to the table
-function addToTable() {
+function addToTable(tableData) {
     tableData.map(data => {
         var tbl = tbody.append("tr");
 
@@ -21,38 +21,16 @@ function addToTable() {
         tbl.append("td").text(data.comments);
     });
 }
+//making the filter button work
+addToTable(tableData);
+var button = d3.select("#filter-btn");
+button.on("click", function () {
+    var tblValue = d3.select("#datetime").property("value");
+    console.log(tblValue);
 
-addToTable();
-var button = d3.select("filter-btn");
-button.on("click", function(){
-    var addValue = d3.select("#datetime").property("value");
-    console.log(addValue);
-
-    var tableFilter = tableData.filter(data => data.datetime === addValue);
+    var tableFilter = tableData.filter(data => data.datetime === tblValue);
     console.log(tableFilter);
 
     tbody.html("");
-})
-
-/* addToTable();
-var button = d3.select("filter-btn");
-button.on("click", function(){
-    var addValue = d3.select("#city").property("value");
-    console.log(addValue);
-
-    var tableFilter = tableData.filter(data => data.city === addValue);
-    console.log(tableFilter);
-
-    tbody.html("");
-}) */
-
-    tableFilter.array.forEach(element => {
-        var tbl = tbody.append("tr");
-            tbl.append("td").text(obj.datetime);
-            tbl.append("td").text(obj.city);
-            tbl.append("td").text(obj.state);
-            tbl.append("td").text(obj.country);
-            tbl.append("td").text(obj.shape);
-            tbl.append("td").text(obj.durationMinutes);
-            tbl.append("td").text(obj.comments);
-        });
+    addToTable(tableFilter);
+});
