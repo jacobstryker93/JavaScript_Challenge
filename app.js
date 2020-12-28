@@ -9,15 +9,16 @@ var tbody = d3.select("tbody");
 //Function for adding data to the table
 function addToTable() {
     tableData.map(data => {
-        var row = tbody.append("tr");
+        var tbl = tbody.append("tr");
 
-        row.append("td").text(data.datetime);
-        row.append("td").text(data.city);
-        row.append("td").text(data.state);
-        row.append("td").text(data.country);
-        row.append("td").text(data.country);
-        row.append("td").text(data.shape);
-        row.append("td").text(data.comments);
+        tbl.append("td").text(data.datetime);
+        tbl.append("td").text(data.city);
+        tbl.append("td").text(data.state);
+        tbl.append("td").text(data.country);
+        tbl.append("td").text(data.country);
+        tbl.append("td").text(data.shape);
+        tbl.append("td").text(data.durationMinutes)
+        tbl.append("td").text(data.comments);
     });
 }
 
@@ -32,3 +33,26 @@ button.on("click", function(){
 
     tbody.html("");
 })
+
+/* addToTable();
+var button = d3.select("filter-btn");
+button.on("click", function(){
+    var addValue = d3.select("#city").property("value");
+    console.log(addValue);
+
+    var tableFilter = tableData.filter(data => data.city === addValue);
+    console.log(tableFilter);
+
+    tbody.html("");
+}) */
+
+    tableFilter.array.forEach(element => {
+        var tbl = tbody.append("tr");
+            tbl.append("td").text(obj.datetime);
+            tbl.append("td").text(obj.city);
+            tbl.append("td").text(obj.state);
+            tbl.append("td").text(obj.country);
+            tbl.append("td").text(obj.shape);
+            tbl.append("td").text(obj.durationMinutes);
+            tbl.append("td").text(obj.comments);
+        });

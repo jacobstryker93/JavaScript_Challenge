@@ -1,1 +1,1 @@
-# JavaSctipt_Challenge
+# Javascript-Challenge
